@@ -1,0 +1,62 @@
+<!--suppress ALL -->
+<beans xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:beans="http://www.springframework.org/schema/beans"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/context
+	    http://www.springframework.org/schema/context/spring-context.xsd
+	    http://www.springframework.org/schema/beans
+	    http://www.springframework.org/schema/beans/spring-beans.xsd
+	    http://www.springframework.org/schema/aop
+	    http://www.springframework.org/schema/aop/spring-aop.xsd
+	    http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
+
+
+    <!-- 属性文件替换-->
+    <bean id="propertyConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:mysql.properties</value>
+                <!--<value>classpath:redis.properties</value>-->
+                <!--<value>classpath:dubbo.properties</value>-->
+                <value>classpath:system.properties</value>
+            </list>
+        </property>
+        <beans:property name="ignoreUnresolvablePlaceholders">
+            <beans:value>true</beans:value>
+        </beans:property>
+    </bean>
+
+    <!-- 注解扫描-->
+    <context:component-scan base-package="cn.nxnil.blueack"/>
+
+    <!-- dao配置-->
+    <beans:import resource="classpath*:application-mybatis.xml"/>
+    <!--<beans:import resource="classpath*:application-redis.xml"/>-->
+
+    <!-- dubbo-->
+    <!--<beans:import resource="classpath*:application-dubbo.xml"/>-->
+    <!--<beans:import resource="classpath*:application-dubbo-consumer.xml"/>-->
+
+    <!-- aop -->
+    <aop:aspectj-autoproxy/>
+
+    <bean id="validator"
+          class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+        <!--<beans:property name="validationMessageSource" ref="messageSource"/>-->
+    </bean>
+
+    <!--spring 异步线程池 -->
+    <bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+        <property name="corePoolSize" value="150"/>
+        <property name="queueCapacity" value="1000"/>
+        <property name="maxPoolSize" value="300"/>
+    </bean>
+
+    <!-- 启动定时任务  -->
+    <task:scheduler id="scheduler" pool-size="50"/>
+    <task:annotation-driven scheduler="scheduler"/>
+</beans>

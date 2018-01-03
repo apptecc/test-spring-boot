@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.nxnil.blueack.dmscenter.dao.FetchRecordMapper">
+    <sql id="all_column">
+        `id`,
+        `shop_id`,
+        `code`,
+        `message`,
+        `last_Serial_id`,
+        `full_flag`,
+        `random`,
+        `status`,
+        `created_date`,
+        `created_time`,
+        `updated_time`
+    </sql>
+    <resultMap id="BaseResultMap" type="cn.nxnil.blueack.dmscenter.model.FetchRecord">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="shop_id" property="shopId" jdbcType="VARCHAR"/>
+        <result column="code" property="code" jdbcType="VARCHAR"/>
+        <result column="message" property="message" jdbcType="VARCHAR"/>
+        <result column="last_Serial_id" property="lastSerialId" jdbcType="VARCHAR"/>
+        <result column="full_flag" property="fullFlag" jdbcType="BIT"/>
+        <result column="random" property="random" jdbcType="INTEGER"/>
+        <result column="status" property="status" jdbcType="INTEGER"/>
+        <result column="created_date" property="createdDate" jdbcType="INTEGER"/>
+        <result column="created_time" property="createdTime" jdbcType="TIMESTAMP"/>
+        <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, shop_id, code, message, last_Serial_id, full_flag, random, status, created_date, 
+    created_time, updated_time
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select 'false' as QUERYID,
+        <include refid="Base_Column_List"/>
+        from fetch_record
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from fetch_record
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+    <insert id="insert" parameterType="cn.nxnil.blueack.dmscenter.model.FetchRecord">
+    insert into fetch_record (id, shop_id, code, 
+      message, last_Serial_id, full_flag, 
+      random, status, created_date, 
+      created_time, updated_time)
+    values (#{id,jdbcType=BIGINT}, #{shopId,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, 
+      #{message,jdbcType=VARCHAR}, #{lastSerialId,jdbcType=VARCHAR}, #{fullFlag,jdbcType=BIT}, 
+      #{random,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{createdDate,jdbcType=INTEGER}, 
+      #{createdTime,jdbcType=TIMESTAMP}, #{updatedTime,jdbcType=TIMESTAMP})
+  </insert>
+    <insert id="insertSelective" parameterType="cn.nxnil.blueack.dmscenter.model.FetchRecord">
+        insert into fetch_record
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="shopId != null">
+                shop_id,
+            </if>
+            <if test="code != null">
+                code,
+            </if>
+            <if test="message != null">
+                message,
+            </if>
+            <if test="lastSerialId != null">
+                last_Serial_id,
+            </if>
+            <if test="fullFlag != null">
+                full_flag,
+            </if>
+            <if test="random != null">
+                random,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="createdDate != null">
+                created_date,
+            </if>
+            <if test="createdTime != null">
+                created_time,
+            </if>
+            <if test="updatedTime != null">
+                updated_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="shopId != null">
+                #{shopId,jdbcType=VARCHAR},
+            </if>
+            <if test="code != null">
+                #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="message != null">
+                #{message,jdbcType=VARCHAR},
+            </if>
+            <if test="lastSerialId != null">
+                #{lastSerialId,jdbcType=VARCHAR},
+            </if>
+            <if test="fullFlag != null">
+                #{fullFlag,jdbcType=BIT},
+            </if>
+            <if test="random != null">
+                #{random,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="createdDate != null">
+                #{createdDate,jdbcType=INTEGER},
+            </if>
+            <if test="createdTime != null">
+                #{createdTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatedTime != null">
+                #{updatedTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="cn.nxnil.blueack.dmscenter.model.FetchRecord">
+        update fetch_record
+        <set>
+            <if test="shopId != null">
+                shop_id = #{shopId,jdbcType=VARCHAR},
+            </if>
+            <if test="code != null">
+                code = #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="message != null">
+                message = #{message,jdbcType=VARCHAR},
+            </if>
+            <if test="lastSerialId != null">
+                last_Serial_id = #{lastSerialId,jdbcType=VARCHAR},
+            </if>
+            <if test="fullFlag != null">
+                full_flag = #{fullFlag,jdbcType=BIT},
+            </if>
+            <if test="random != null">
+                random = #{random,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="createdDate != null">
+                created_date = #{createdDate,jdbcType=INTEGER},
+            </if>
+            <if test="createdTime != null">
+                created_time = #{createdTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatedTime != null">
+                updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="cn.nxnil.blueack.dmscenter.model.FetchRecord">
+    update fetch_record
+    set shop_id = #{shopId,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      message = #{message,jdbcType=VARCHAR},
+      last_Serial_id = #{lastSerialId,jdbcType=VARCHAR},
+      full_flag = #{fullFlag,jdbcType=BIT},
+      random = #{random,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      created_date = #{createdDate,jdbcType=INTEGER},
+      created_time = #{createdTime,jdbcType=TIMESTAMP},
+      updated_time = #{updatedTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+    <!-- custom -->
+    <sql id="batch_insert_column_list">
+    `id`,
+    `shop_id`,
+    `code`,
+    `message`,
+    `last_serial_id`,
+    `full_flag`,
+    `random`,
+    `status`,
+    `created_date`
+  </sql>
+
+    <insert id="insertList" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO fetch_record (
+        <include refid="batch_insert_column_list"/>
+        )VALUES
+        <foreach collection="list" item="pojo" index="index" separator=",">
+            (
+            #{pojo.id},
+            #{pojo.shopId},
+            #{pojo.code},
+            #{pojo.message},
+            #{pojo.lastSerialId},
+            #{pojo.fullFlag},
+            #{pojo.random},
+            #{pojo.status},
+            #{pojo.createdDate}
+            )
+        </foreach>
+    </insert>
+
+    <select id="findAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from fetch_record
+    </select>
+
+    <select id="selectByShopId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from fetch_record
+        where shop_id = #{shopId} AND created_date = #{createdDate}
+    </select>
+    <select id="findCount" resultType="java.lang.Integer">
+    SELECT count(1) FROM fetch_record;
+  </select>
+</mapper>

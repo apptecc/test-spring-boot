@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <classPathEntry location="D:/DevTools/mysql-connector-java-5.1.40.jar"/>
+
+    <context id="order" targetRuntime="MyBatis3">
+        <commentGenerator type="org.mybatis.generator.internal.DefaultCommentGenerator">
+            <property name="suppressAllComments" value="true"/>
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://10.0.71.161:3306/b2b_dmscenter_test"
+                        userId="b2border"
+                        password="b2border1234">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="cn.nxnil.blueack.model"
+                            targetProject="cn-nxnil-blueack-dao\src\main\java">
+            <property name="enableSubPackages" value="false"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="mappings"
+                         targetProject="cn-nxnil-blueack-dao\src\main\resources">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator targetPackage="cn.nxnil.blueack.dao"
+                             targetProject="cn-nxnil-blueack-dao\src\main\java" type="XMLMAPPER">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+
+        <!--<table tableName="fetch_record" domainObjectName="FetchRecord"-->
+        <!--enableInsert="true" enableSelectByPrimaryKey="true"-->
+        <!--enableSelectByExample="false" enableUpdateByPrimaryKey="true"-->
+        <!--enableDeleteByPrimaryKey="true" enableDeleteByExample="false"-->
+        <!--enableCountByExample="false" enableUpdateByExample="false"-->
+        <!--selectByPrimaryKeyQueryId="false" selectByExampleQueryId="false">-->
+        <!--</table>-->
+        <!--<table tableName="goods_prom_infos" domainObjectName="GoodsPromInfos"-->
+        <!--enableInsert="true" enableSelectByPrimaryKey="true"-->
+        <!--enableSelectByExample="false" enableUpdateByPrimaryKey="true"-->
+        <!--enableDeleteByPrimaryKey="true" enableDeleteByExample="false"-->
+        <!--enableCountByExample="false" enableUpdateByExample="false"-->
+        <!--selectByPrimaryKeyQueryId="false" selectByExampleQueryId="false">-->
+        <!--</table>-->
+        <!--<table tableName="transit_fetch_record" domainObjectName="TransitFetchRecord"-->
+        <!--enableInsert="true" enableSelectByPrimaryKey="true"-->
+        <!--enableSelectByExample="false" enableUpdateByPrimaryKey="true"-->
+        <!--enableDeleteByPrimaryKey="true" enableDeleteByExample="false"-->
+        <!--enableCountByExample="false" enableUpdateByExample="false"-->
+        <!--selectByPrimaryKeyQueryId="false" selectByExampleQueryId="false">-->
+        <!--</table>-->
+        <table tableName="shop_product_promo_info" domainObjectName="ShopProductPromoInfo"
+               enableInsert="true" enableSelectByPrimaryKey="true"
+               enableSelectByExample="false" enableUpdateByPrimaryKey="true"
+               enableDeleteByPrimaryKey="true" enableDeleteByExample="false"
+               enableCountByExample="false" enableUpdateByExample="false"
+               selectByPrimaryKeyQueryId="false" selectByExampleQueryId="false">
+        </table>
+    </context>
+</generatorConfiguration>

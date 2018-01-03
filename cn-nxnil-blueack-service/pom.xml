@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>cn-nxnil-blueack</artifactId>
+        <groupId>cn.nxnil.blueack</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>cn-nxnil-blueack-service</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>cn.nxnil.blueack</groupId>
+            <artifactId>cn-nxnil-blueack-facade-stub</artifactId>
+            <version>${parent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.nxnil.blueack</groupId>
+            <artifactId>cn-nxnil-blueack-dao</artifactId>
+            <version>${parent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.nxnil.blueack</groupId>
+            <artifactId>cn-nxnil-blueack-client</artifactId>
+            <version>${parent.version}</version>
+        </dependency>
+
+    </dependencies>
+
+
+</project>
